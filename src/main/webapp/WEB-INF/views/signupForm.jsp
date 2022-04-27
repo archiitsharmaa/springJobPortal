@@ -9,8 +9,7 @@
 <meta charset="ISO-8859-1">
 <title>Registration Form</title>
 
-<link type="text/css" rel="stylesheet"
-	href="${pageContext.request.contextPath}/files/css/style.css">
+<link href="<c:url value="./template/css/style.css" />" rel="stylesheet">
 
 </head>
 <body background = "background.svg">
@@ -46,6 +45,7 @@
 					<form:input path="email" placeholder="email" required="true" />
 					<form:input path="phone" placeholder="Phone number" required="true" />
 					<form:input path="username" placeholder="Username" required="true" />
+					<form:errors path="username" cssStyle="color:#ff3860" ></form:errors>
 					<form:password path="password" placeholder="Password"
 						required="true" />
 						

@@ -1,13 +1,32 @@
 package com.springsecurity.dto;
 
+import org.hibernate.annotations.ColumnDefault;
+
+import com.springsecurity.validations.username.NotExistingUsername;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.SecondaryTable;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+@Entity
+@Table(name = "users")
+@SecondaryTable(name = "authorities")
 public class SignupDTO {
+	
 	
 	private String name;
 	private String email;	
 	private String phone;
+	@Id
+	@NotExistingUsername
 	private String username;
+	@Column(table = "authorities", name = "authority")
 	private String userType;
 	private String password;
+	
 	public String getName() {
 		return name;
 	}

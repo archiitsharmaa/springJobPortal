@@ -26,6 +26,8 @@
 <a href = "/springsecurity/candidate">Show candiate Dashbaord</a>
 </sec:authorize>
 
+<span sec:authentication="principal.email">Email</span>
+
  
 <form:form action = "logout" method = "POST">
 	<input type = "submit" value = "logout">

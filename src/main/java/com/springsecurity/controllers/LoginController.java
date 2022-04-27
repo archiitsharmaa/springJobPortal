@@ -3,27 +3,35 @@ package com.springsecurity.controllers;
 import java.security.Principal;
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.springsecurity.dao.SignupDAO;
+import com.springsecurity.dao.UserDAO;
 import com.springsecurity.dto.SignupDTO;
+import com.springsecurity.services.UserService;
 
 @Controller
 public class LoginController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private UserService userService;
 
 	@Autowired
-	private SignupDAO signupDAO;
+	private UserDAO userDAO;
 
 	@GetMapping("/loginForm")
 	public String login() {
@@ -31,23 +39,33 @@ public class LoginController {
 		return "loginForm";
 	}
 
-	@GetMapping("/signupForm")
-	public String signupForm(@ModelAttribute("signupdto") SignupDTO signupDTO) {
-
-		return "signupForm";
-	}
+	
 
 	@PostMapping("/process-signup")
-	public String processSignup(SignupDTO signupDTO) {
+	public ModelAndView processSignup(@ModelAttribute("signupdto") @Valid SignupDTO signupDTO , BindingResult result) {
 
+		
+		ModelAndView modelAndView = new ModelAndView("loginForm");
+		
 		String encodedPassword = passwordEncoder.encode(signupDTO.getPassword());
 		signupDTO.setPassword(encodedPassword);
 
-		// SAVE THE DTO : dto call
+		
+		System.out.println(result.hasErrors());
+		if(result.hasErrors()) {
+			ModelAndView repopulateModelAndView = new ModelAndView("signupForm");
+			System.out.println("Has Errors");
+			return repopulateModelAndView;
+		}else {
+//			userDAO.saveUser(signupDTO);
+			
+			userService.signup(signupDTO);
+			
+			
+			return modelAndView;
+		}
+		
 
-		signupDAO.saveUser(signupDTO);
-
-		return "redirect:/loginForm";
 	}
 
 	@GetMapping("/welcome")
@@ -55,7 +73,6 @@ public class LoginController {
 
 		String username = principal.getName();
 
-		System.out.println(username);
 
 		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
 		System.out.println(authorities);

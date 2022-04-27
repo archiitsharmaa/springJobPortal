@@ -6,6 +6,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -34,8 +35,6 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		 auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(passwordEncoder) ;
 		
-		
-
 	}
 	
 	@Override
@@ -45,6 +44,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers("/employer").hasAuthority("Employer")
 		.antMatchers("/candidate").hasAuthority("Job Seeker")
+		.antMatchers("/js/**", "/css/**").permitAll()
 		.and()
 			.formLogin().loginPage("/loginForm").loginProcessingUrl("/process-login").permitAll().defaultSuccessUrl("/welcome")
 			.and()
@@ -54,7 +54,12 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		
 	}
 	
-
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+	    web
+	            .ignoring()
+	            .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
+	}
 	
 	
 	

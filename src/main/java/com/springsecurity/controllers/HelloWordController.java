@@ -1,28 +1,24 @@
 package com.springsecurity.controllers;
 
-import java.security.Principal;
-import java.util.Collection;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import com.springsecurity.dto.JobPostingDTO;
+import com.springsecurity.dto.SignupDTO;
 
 @Controller
 public class HelloWordController {
 
-	@RequestMapping("/")
-	public String defaultRedirect() {
-		
-		return "redirect:/signupForm";
+	@GetMapping("/")
+	public String signupForm(@ModelAttribute("signupdto") SignupDTO signupDTO) {
 
+		return "signupForm";
 	}
 
 	@GetMapping("/employer")
-	public String showEmployerDashboard() {
+	public String showEmployerDashboard(@ModelAttribute("jobPostingDTO") JobPostingDTO jobPostingDTO) {
 
 		return "employer-dashboard";
 
