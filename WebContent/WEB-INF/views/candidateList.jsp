@@ -67,9 +67,7 @@
 					 <th>CandidateUsername</th>
 						<th>CandidateEmail</th> 
 						<th>Job Id</th>
-						<sec:authorize access='hasAuthority("Employer")'>
-							<th>Action</th>
-						</sec:authorize>
+					
 					</tr>
 
 					<c:forEach items="${values}" var="jobs">
@@ -79,12 +77,9 @@
 							<td>${jobs.candidateEmail}</td>
 							<td>${jobs.jobid}</td>
 
-							<sec:authorize access='hasAuthority("Employer")'>
-								<td><a
-									href="/CustomerManager/candidateList?username=${username}&email=${email}&id=${jobs.id}">Apply</a>
-								</td>
+		
 
-							</sec:authorize>
+							
 						</tr>
 					</c:forEach>
 
