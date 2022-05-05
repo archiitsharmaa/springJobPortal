@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Job List</title>
+<title>My Applications</title>
 <link href="<c:url value="./template/css/style.css" />" rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
 </head>
@@ -77,7 +77,7 @@
 					</sec:authorize>
 				</tr>
 
-				<c:forEach items="${listJobs}" var="jobs">
+				<c:forEach items="${postedJobs}" var="jobs">
 					<tr>
 						<td>${jobs.id}</td>
 						<td>${jobs.jobName}</td>
@@ -88,8 +88,8 @@
 
 						<sec:authorize access='hasAuthority("Job Seeker")'>
 							<td><a class = "button"
-								href="/CustomerManager/applyJob?username=${username}&email=${email}&id=${jobs.id}&jobName=${jobs.jobName}">
-								Apply</a>
+								href="/CustomerManager/withdrawApplication?username=${username}&email=${email}&id=${jobs.id}&jobName=${jobs.jobName}">
+								Withdraw</a>
 							</td>
 
 						</sec:authorize>

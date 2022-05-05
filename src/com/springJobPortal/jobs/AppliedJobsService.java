@@ -19,5 +19,16 @@ public class AppliedJobsService {
 		
 		repo.save(appliedjobs);
 	}
+	
+	//deletes the object
+		public void delete(Long id) {
+			repo.deleteById(id);
+		}
+
+		public void deleteApplication(String username, Long id) {
+			
+			repo.deleteApp(username,id);
+			
+		}
 
 }

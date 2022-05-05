@@ -41,7 +41,7 @@
 
 					<a
 						href="/CustomerManager/joblist?username=${username}&email=${email}">
-						<i class='fas fa-list'></i> All Jobs
+						<i class='fas fa-list'></i> Job Market Place
 					</a>
 					
 					<sec:authorize access='hasAuthority("Employer")'>

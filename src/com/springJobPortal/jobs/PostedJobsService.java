@@ -33,5 +33,8 @@ public class PostedJobsService {
 		repo.deleteById(id);
 	}
 
-
+	//updates the project
+	public void updateJob(Long jobid, String jobName, String companyName, String description) {
+		repo.updatePost(jobid,jobName,companyName,description);
+	}
 }

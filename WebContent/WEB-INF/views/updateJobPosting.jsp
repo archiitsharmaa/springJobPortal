@@ -5,17 +5,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="ISO-8859-1">
-<title>Employer Dashboard</title>
-<link href="<c:url value=" ./template/css/style.css" />"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+<title>Update Job</title>
+<link href="<c:url value="./template/css/style.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
 </head>
-
 <body>
+
 	<!-- main div covers entire page -->
 	<div id="main">
 		<!-- box div at the center of page with glassify effect -->
@@ -70,24 +67,20 @@
 
 								<h1 class="title">Post a Job</h1>
 
-								<form:form action="process-jobposting" method="POST"
+								<form:form action="processjobUpdating/?username=${username}&email=${email}" method="POST"
 									modelAttribute="postedJobs">
 
-									<form:input path="employerUsername" value="${username}"
-										disabled="true" />
 									<form:hidden path="employerUsername" value="${username}" />
 
-
-									<form:input path="employerEmail" value="${email}"
-										disabled="true" />
 									<form:hidden path="employerEmail" value="${email}" />
+									<form:hidden path="id" value="${jobid}" />
 
 									<form:input path="CompanyName" placeholder="Company Name"
-										required="true" />
+										default = "${companyname}" required="true" />
 									<form:input path="JobName" placeholder="Job Title"
-										required="true" />
+										default = "${jobname}" required="true" />
 									<form:textarea path="Description" placeholder="Description"
-										required="true" />
+										default = "${description}" required="true" />
 
 
 									<p />
@@ -106,5 +99,4 @@
 		</div>
 		</div>
 </body>
-
 </html>

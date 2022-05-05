@@ -10,6 +10,16 @@ html, body{
 	background-position: center;
 }
 
+.button {
+  line-height: 1;
+  display: inline-block;
+  font-size: 1rem;
+  border-radius: 3px;
+  color: #fff;
+  padding: 4px;
+  background-color: #a6a6a6;
+}
+
 
 /* container div for box in middle of page */
  #container{

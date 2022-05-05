@@ -39,7 +39,7 @@
 
 					<a
 						href="/CustomerManager/joblist?username=${username}&email=${email}">
-						<i class='fas fa-list'></i> All Jobs
+						<i class='fas fa-list'></i> Job Market Place
 					</a>
 					
 					<sec:authorize access='hasAuthority("Employer")'>
@@ -82,13 +82,17 @@
 						<td>${jobs.employerEmail}</td>
 
 						<sec:authorize access='hasAuthority("Employer")'>
-							<td><a
+							<td><a class = "button"
 								href="/CustomerManager/candidateList?username=${username}&email=${email}&id=${jobs.id}&name=${jobs.jobName}">
 								Candiate List</a>
 								<p/>
-								<a
+								<a class = "button"
 								href="/CustomerManager/deleteJob?username=${username}&email=${email}&id=${jobs.id}">
 								Delete Posting</a>
+								<p/>
+								<a class = "button"
+								href="/CustomerManager/updateJobPosting?username=${username}&email=${email}&jobid=${jobs.id}&jobName=${jobs.jobName}&companyName=${jobs.companyName}&description=${jobs.description}">
+								Edit Posting</a>
 							</td>
 
 						</sec:authorize>

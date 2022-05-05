@@ -31,11 +31,16 @@
 					</sec:authorize>
 
 					<a href="/CustomerManager/joblist?username=${customer.username}&email=${customer.email}">
-					<i class='fas fa-list'></i> All Jobs</a> 
+					<i class='fas fa-list'></i> Job Market Place</a> 
 					
 					<sec:authorize access='hasAuthority("Employer")'>
 						<a href="/CustomerManager/postedJobs?username=${customer.username}&email=${customer.email}&id=${customer.id}">
 						<i class="fas fa-check-square"></i> My Jobs</a>
+					</sec:authorize>
+					
+					<sec:authorize access='hasAuthority("Job Seeker")'>
+						<a href="/CustomerManager/myjobapplication?username=${customer.username}&email=${customer.email}">
+						<i class="fas fa-check-square"></i> My Applications</a>
 					</sec:authorize>
 				
 		
