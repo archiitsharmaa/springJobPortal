@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import com.springJobPortal.model.PostedJobs;
+
 //default jpa repository crud which has basic
 public interface PostedJobsRepository extends CrudRepository<PostedJobs, Long> {
 

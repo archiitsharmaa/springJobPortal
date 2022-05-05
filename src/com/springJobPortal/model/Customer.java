@@ -1,4 +1,4 @@
-package com.springJobPortal.customer;
+package com.springJobPortal.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,11 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import jakarta.persistence.Table;
 
+//declares the class as an entity/table for the orm 
 @Entity
+//setting up the table name 
 @Table(name = "customer")
-//@SecondaryTable(name = "authorities")
-public class Customer{
+public class Customer {
 	@Id
+	// genrating the values auto amticalically for the id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
@@ -19,20 +21,13 @@ public class Customer{
 	private String username;
 	private String Phone;
 	private String password;
-	//@Column(table = "authorities")
 	private String role;
 
-	public String getPhone() {
-		return Phone;
+	// constructor
+	public Customer() {
 	}
 
-	public void setPhone(String phone) {
-		Phone = phone;
-	}
-
-	protected Customer() {
-	}
-
+	// constructor with feilds
 	protected Customer(String name, String email, String username, String Phone, String password, String role) {
 		this.name = name;
 		this.email = email;
@@ -40,6 +35,15 @@ public class Customer{
 		this.Phone = Phone;
 		this.password = password;
 		this.role = role;
+	}
+
+	// setter and getters
+	public String getPhone() {
+		return Phone;
+	}
+
+	public void setPhone(String phone) {
+		Phone = phone;
 	}
 
 	public String getRole() {
@@ -89,7 +93,5 @@ public class Customer{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
-	
 
 }

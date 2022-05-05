@@ -1,4 +1,4 @@
-package com.springJobPortal.jobs;
+package com.springJobPortal.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,13 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
-
+//declares the class as an entity/table for the orm 
 @Entity
+//setting up the table name 
 @Table(name = "postedjobs")
 public class PostedJobs {
-	
+
 	@Id
+	// genrating the values auto amticalically for the id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String employerUsername;
@@ -20,11 +21,13 @@ public class PostedJobs {
 	private String companyName;
 	private String description;
 	private String employerEmail;
-	
+
+	// constructor
 	public PostedJobs() {
-	
+
 	}
 
+	// setter and getters
 	public Long getId() {
 		return id;
 	}
@@ -82,17 +85,5 @@ public class PostedJobs {
 		this.description = description;
 		this.employerEmail = employerEmail;
 	}
-	
-	
-	
-
-	
-
-	
-	
-	
-	
-	
-	
 
 }

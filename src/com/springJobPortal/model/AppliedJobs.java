@@ -1,4 +1,4 @@
-package com.springJobPortal.jobs;
+package com.springJobPortal.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,20 +7,25 @@ import javax.persistence.Id;
 
 import jakarta.persistence.Table;
 
+//declares the class as an entity/table for the orm 
 @Entity
+//setting up the table name 
 @Table(name = "appliedJobs")
 public class AppliedJobs {
-	
+
 	@Id
+	// genrating the values auto amticalically for the id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Long jobid;
 	private String candidateUsername;
 	private String candidateEmail;
-	
+
+	// constructor
 	public AppliedJobs() {
 	}
 
+	// constructor with feilds
 	public AppliedJobs(Long id, Long jobid, String candidateUsername, String candidateEmail) {
 		super();
 		this.id = id;
@@ -29,6 +34,7 @@ public class AppliedJobs {
 		this.candidateEmail = candidateEmail;
 	}
 
+	// setter and getters
 	public Long getId() {
 		return id;
 	}
@@ -60,11 +66,5 @@ public class AppliedJobs {
 	public void setCandidateEmail(String candidateEmail) {
 		this.candidateEmail = candidateEmail;
 	}
-
-	
-	
-	
-	
-	
 
 }

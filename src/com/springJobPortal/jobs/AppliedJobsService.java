@@ -5,6 +5,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.springJobPortal.model.AppliedJobs;
+
 //service layer
 @Service
 @Transactional
