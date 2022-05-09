@@ -81,7 +81,7 @@
 								<p />
 								<p />
 
-								<input type="submit" value="Register">
+								<input type="submit" value="Register" id ="register">
 							</form:form>
 
 							<a href="/CustomerManager/loginForm">Already have an account
