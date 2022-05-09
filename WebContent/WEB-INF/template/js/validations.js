@@ -72,7 +72,6 @@ function validatePassword(){
  if (!(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/.test(password))) {
   elementBorder.classList.remove("success");
   elementBorder.classList.add("error");
-  elementError.innerHTML = 'Please enter a valid password.';
   return false;
   } else {
     elementError.innerHTML = '';
