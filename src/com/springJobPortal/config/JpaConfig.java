@@ -25,7 +25,6 @@ public class JpaConfig {
 		
 		try {
 		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-		factoryBean.setPersistenceUnitName("SalesDB");
 		
 		log.info("entityManagerFactory intialized");
 

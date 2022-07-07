@@ -81,7 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 	}
 
-	// allows the extrernal resources like css and js files to be included in the project
+	//ignores teh spring security scrutiny on these resources allows the extrernal resources like css and js files to be included in the project
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
